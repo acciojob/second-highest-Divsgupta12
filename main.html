@@ -10,25 +10,21 @@
 	<script>
 		function secondHighest(arr) {
 			
-			let n = arr.length;
-			if (n == 0 || n == 1) {
-				return -Infinity;				
-			} else {
-				let temp;  
-			for (let i = 0; i < n; i++)   
-				{  
-					for (let j = i + 1; j < n; j++)   
-					{  
-						if (arr[i] > arr[j])   
-						{  
-							temp = arr[i];  
-							arr[i] = arr[j];  
-							arr[j] = temp;  
-						}  
-					}  
-				}  
-			return arr[n-2];
+			if (arr.length < 2) {
+			    return -Infinity;
 			}
+
+		  arr.sort(function(a, b) {
+		    return b - a;
+		  });
+		
+		  var highest = arr[0];
+		  for (var i = 1; i < arr.length; i++) {
+		    if (arr[i] < highest) {
+		      return arr[i];
+		    }
+		  }
+		  return -Infinity;
 		}
 			
 		
